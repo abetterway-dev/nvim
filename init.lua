@@ -12,6 +12,8 @@ Kickstart Guide:
 
 --]]
 
+
+
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -89,7 +91,13 @@ vim.o.confirm = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
-
+-- My habits
+vim.keymap.set('n', '<leader>dd', '"_dd', { desc = 'Delete line (no yank)' })
+vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>t', function()
+    vim.cmd('new | terminal') -- or :vsplit | terminal for vertical
+    vim.cmd('resize 15')      -- optional: set height
+end, { noremap = true, silent = true })
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
